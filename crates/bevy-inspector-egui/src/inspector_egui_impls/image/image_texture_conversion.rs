@@ -86,7 +86,7 @@ pub fn from_dynamic(dyn_img: DynamicImage, is_srgb: bool) -> Image {
             format = TextureFormat::Rgba16Uint;
 
             let mut local_data =
-                Vec::with_capacity(width as usize * height as usize * format.pixel_size());
+                Vec::with_capacity(width as usize * height as usize * format.pixel_size().unwrap());
 
             for pixel in image.into_raw().chunks_exact(3) {
                 let r = pixel[0];
@@ -117,7 +117,7 @@ pub fn from_dynamic(dyn_img: DynamicImage, is_srgb: bool) -> Image {
             format = TextureFormat::Rgba32Float;
 
             let mut local_data =
-                Vec::with_capacity(width as usize * height as usize * format.pixel_size());
+                Vec::with_capacity(width as usize * height as usize * format.pixel_size().unwrap());
 
             for pixel in image.into_raw().chunks_exact(3) {
                 let r = pixel[0];
